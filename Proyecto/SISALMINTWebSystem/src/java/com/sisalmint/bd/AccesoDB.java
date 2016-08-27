@@ -15,10 +15,13 @@ import java.sql.SQLException;
  */
 public final class AccesoDB {
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/DBSISALMINT", "root", "root");
-
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            String url = "jdbc:mysql://localhost/DBSISALMINT";
+            return DriverManager.getConnection(url, "root", "root");
+//            Connection  asd=DriverManager.getConnection("jdbc:mysql://localhost/dbsisalmint", "root", "root");
+//            return DriverManager.getConnection("jdbc:mysql://localhost/dbsisalmint", "", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -18,8 +18,10 @@ create table Admin(AdminID int AUTO_INCREMENT primary key,
                         Password varchar(20)not null,
 						FirstName varchar(20) not null,
                         LastName varchar(20) not null,
-                        Email varchar(20) not null,
+                        Email varchar(40) not null,
                         BirthDate Date not null,
-                        Status varchar(2)not null
+                        Status varchar(5)not null
                         );
 alter table Products add foreign key(CategoryID)references Categories(CategoryID);
+
+insert into Admin(User,Password,Firstname,LastName,Email,BirthDate,Status) values('a','a','David','Silva','davidsilva3290@gmail.com','18900101','ACT');
