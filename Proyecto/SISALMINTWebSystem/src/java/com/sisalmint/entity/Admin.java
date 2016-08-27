@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sisalmint.entidad;
+package com.sisalmint.entity;
 import java.sql.Date;
 /**
  *
@@ -11,6 +11,8 @@ import java.sql.Date;
  */
 public class Admin {
     private String AdminID;
+    private String User;
+    private String Password;
     private String FirstName;
     private String LastName;
     private String Email;
@@ -19,6 +21,22 @@ public class Admin {
 
     public String getAdminID() {
         return AdminID;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String User) {
+        this.User = User;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     public void setAdminID(String AdminID) {
@@ -63,6 +81,5 @@ public class Admin {
 
     public void setStatus(String Status) {
         this.Status = Status;
-    }
-    
+    }    
 }
