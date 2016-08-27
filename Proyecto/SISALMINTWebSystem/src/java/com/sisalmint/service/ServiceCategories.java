@@ -7,6 +7,7 @@ package com.sisalmint.service;
 
 import com.sisalmint.dao.CategoriesDAO;
 import com.sisalmint.entity.Categories;
+import java.util.List;
 
 /**
  *
@@ -32,5 +33,10 @@ public class ServiceCategories {
     public Categories getCategoryById(String CategoryID) {
         CategoriesDAO objCategoryDAO = new CategoriesDAO();
         return objCategoryDAO.getCategoryById(CategoryID);
+    }
+
+    public List<Categories> getCategories() {
+        CategoriesDAO objCategoryDAO = new CategoriesDAO();
+        return objCategoryDAO.getCategories();
     }
 }

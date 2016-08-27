@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -127,6 +129,39 @@ public class CategoriesDAO {
             objCategory.setCategoryName(rs.getString("CategoryName"));
             objCategory.setStatus(rs.getString("Status"));
             return objCategory;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("No se tiene acceso al servidor");
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception ex) {
+            }
+        }
+    }
+
+    public List<Categories> getCategories() {
+        Connection cn = null;
+        try {
+            List<Categories> lstcategories = new ArrayList<>();
+            cn = AccesoDB.getConnection();
+            StringBuilder query = new StringBuilder();
+            query.append("SELECT * FROM Categories");
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Categories a = new Categories();
+                a.setCategoryID(rs.getInt("CategoryID"));
+                a.setCategoryName(rs.getString("CategoryName"));
+                a.setStatus(rs.getString("Status"));
+
+                lstcategories.add(a);
+            }
+            return lstcategories;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (Exception e) {

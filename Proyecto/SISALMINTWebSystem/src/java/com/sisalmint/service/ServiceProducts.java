@@ -7,6 +7,7 @@ package com.sisalmint.service;
 
 import com.sisalmint.dao.ProductsDAO;
 import com.sisalmint.entity.Products;
+import java.util.List;
 
 /**
  *
@@ -32,5 +33,10 @@ public class ServiceProducts {
     public Products getProductById(String ProductID) {
         ProductsDAO objProductDAO = new ProductsDAO();
         return objProductDAO.getProductById(ProductID);
+    }
+    
+    public List<Products> getProducts(){
+        ProductsDAO objProductDAO = new ProductsDAO();
+        return objProductDAO.getProducts();
     }
 }

@@ -5,13 +5,13 @@ create table Products(	ProductID varchar(20) primary key,
 						ProductName varchar(20) not null,
                         UnitPrice decimal(6,2) not null,
                         UnitsInStock int not null, 
-                        Status varchar(2)not null,
+                        Status varchar(5)not null,
                         RegDate Date,
                         CategoryID int not null
                       );
 create table Categories(CategoryID int AUTO_INCREMENT primary key,
 						CategoryName varchar(20) not null,
-                        Status varchar(2)not null
+                        Status varchar(5)not null
                         );
 create table Admin(AdminID int AUTO_INCREMENT primary key,
 						User varchar(20)not null,
@@ -24,4 +24,11 @@ create table Admin(AdminID int AUTO_INCREMENT primary key,
                         );
 alter table Products add foreign key(CategoryID)references Categories(CategoryID);
 
+/*Admins*/
 insert into Admin(User,Password,Firstname,LastName,Email,BirthDate,Status) values('a','a','David','Silva','davidsilva3290@gmail.com','18900101','ACT');
+
+/*Categories*/
+insert into Categories(CategoryName,Status) values('c1','ACT');
+
+/*Products*/
+insert into Products(ProductID,ProductName,UnitPrice,UnitsInStock,Status,RegDate,CategoryID)values('P1','Ian',23.50,5,'ACT','19990101',1);

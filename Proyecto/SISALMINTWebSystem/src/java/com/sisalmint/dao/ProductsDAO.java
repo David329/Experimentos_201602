@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -130,15 +132,54 @@ public class ProductsDAO {
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, _idProduct);
             ResultSet rs = ps.executeQuery();
+            
+            rs.next();
+            Products objProduct = new Products();
+            objProduct.setProductID(rs.getString("ProductID"));
+            objProduct.setProductName(rs.getString("ProductName"));
+            objProduct.setUnitPrice(rs.getBigDecimal("UnitPrice"));
+            objProduct.setUnitsInStock(rs.getInt("UnitsInStock"));
+            objProduct.setStatus(rs.getString("Status"));
+            objProduct.setRegDate(rs.getDate("RegDate"));
+            objProduct.setCategoryID(rs.getInt("CategoryID"));
+            return objProduct;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("No se tiene acceso al servidor");
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception ex) {
+            }
+        }
+    }
 
-            Products objCategory = new Products();
-            objCategory.setProductID(rs.getString("ProductID"));
-            objCategory.setUnitPrice(rs.getBigDecimal("UnitPrice"));
-            objCategory.setUnitsInStock(rs.getInt("UnitsInStock"));
-            objCategory.setStatus(rs.getString("Status"));
-            objCategory.setRegDate(rs.getDate("RegDate"));
-            objCategory.setCategoryID(rs.getInt("CategoryID"));
-            return objCategory;
+    public List<Products> getProducts() {
+        Connection cn = null;
+        try {
+            List<Products> lstproducts = new ArrayList<>();
+            cn = AccesoDB.getConnection();
+            StringBuilder query = new StringBuilder();
+            query.append("SELECT * FROM Products");
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Products a = new Products();
+                a.setProductID(rs.getString("ProductID"));
+                a.setProductName(rs.getString("ProductName"));
+                a.setUnitPrice(rs.getBigDecimal("UnitPrice"));
+                a.setUnitsInStock(rs.getInt("UnitsInStock"));
+                a.setStatus(rs.getString("Status"));
+                a.setRegDate(rs.getDate("RegDate"));
+                a.setCategoryID(rs.getInt("CategoryID"));
+
+                lstproducts.add(a);
+            }
+            return lstproducts;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (Exception e) {
