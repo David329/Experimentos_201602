@@ -14,6 +14,8 @@ create table Categories(CategoryID int AUTO_INCREMENT primary key,
                         Status varchar(2)not null
                         );
 create table Admin(AdminID int AUTO_INCREMENT primary key,
+						User varchar(20)not null,
+                        Password varchar(20)not null,
 						FirstName varchar(20) not null,
                         LastName varchar(20) not null,
                         Email varchar(20) not null,
