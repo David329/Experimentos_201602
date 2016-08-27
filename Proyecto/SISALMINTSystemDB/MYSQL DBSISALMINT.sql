@@ -23,5 +23,3 @@ create table Admin(AdminID int AUTO_INCREMENT primary key,
                         Status varchar(2)not null
                         );
 alter table Products add foreign key(CategoryID)references Categories(CategoryID);
-
-
