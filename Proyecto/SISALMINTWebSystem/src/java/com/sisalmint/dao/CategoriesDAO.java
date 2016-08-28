@@ -67,7 +67,6 @@ public class CategoriesDAO {
             ps.setString(2, objCategory.getStatus());
             ps.setInt(3, objCategory.getCategoryID());
             int realizado = ps.executeUpdate();
-            cn.commit();
             if (realizado == 0) {
                 throw new SQLException("Categoria no existe!");
             }
@@ -86,32 +85,30 @@ public class CategoriesDAO {
     }
 
     public void deleteCategory(Categories objCategory) {
-//        Connection cn = null;
-//        try {
-//            cn = AccesoDB.getConnection();
-//            StringBuilder query = new StringBuilder();
-//            query.append("UPDATE Categories SET Status = ? WHERE CategoryID = ?");
-//            PreparedStatement ps = cn.prepareStatement(query.toString());
-//            ps.setString(1, objCategory.getCategoryName());
-//            ps.setString(2, objCategory.getStatus());
-//            ps.setInt(3, objCategory.getCategoryID());
-//            int realizado = ps.executeUpdate();
-//            cn.commit();
-//            if (realizado == 0) {
-//                throw new SQLException("Categoria no existe!");
-//            }
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex.getMessage());
-//        } catch (Exception e) {
-//            throw new RuntimeException("No se tiene acceso al servidor");
-//        } finally {
-//            try {
-//                if (cn != null) {
-//                    cn.close();
-//                }
-//            } catch (Exception ex) {
-//            }
-//        }
+        Connection cn = null;
+        try {
+            cn = AccesoDB.getConnection();
+            StringBuilder query = new StringBuilder();
+            query.append("UPDATE Categories SET Status = ? WHERE CategoryID = ?");
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, "INA");
+            ps.setInt(2, objCategory.getCategoryID());
+            int realizado = ps.executeUpdate();
+            if (realizado == 0) {
+                throw new SQLException("Categoria no existe!");
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("No se tiene acceso al servidor");
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception ex) {
+            }
+        }
     }
 
     public Categories getCategoryById(String _idCategory) {
@@ -119,9 +116,10 @@ public class CategoriesDAO {
         try {
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT CategoryID,CategoryName,Status FROM Categories WHERE CategoryID= ?");
+            query.append("SELECT CategoryID,CategoryName,Status FROM Categories WHERE CategoryID=? and Status=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, _idCategory);
+            ps.setString(2, "ACT");
             ResultSet rs = ps.executeQuery();
 
             Categories objCategory = new Categories();
@@ -149,8 +147,9 @@ public class CategoriesDAO {
             List<Categories> lstcategories = new ArrayList<>();
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT * FROM Categories");
+            query.append("SELECT * FROM Categories WHERE Status=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, "ACT");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

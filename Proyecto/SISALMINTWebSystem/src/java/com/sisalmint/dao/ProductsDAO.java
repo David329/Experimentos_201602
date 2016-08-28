@@ -76,7 +76,6 @@ public class ProductsDAO {
             ps.setInt(6, objProduct.getCategoryID());
             ps.setString(7, objProduct.getProductID());
             int realizado = ps.executeUpdate();
-            cn.commit();
             if (realizado == 0) {
                 throw new SQLException("producto no existe!");
             }
@@ -95,32 +94,30 @@ public class ProductsDAO {
     }
 
     public void deleteProduct(Products objProduct) {
-//        Connection cn = null;
-//        try {
-//            cn = AccesoDB.getConnection();
-//            StringBuilder query = new StringBuilder();
-//            query.append("UPDATE Categories SET Status = ? WHERE CategoryID = ?");
-//            PreparedStatement ps = cn.prepareStatement(query.toString());
-//            ps.setString(1, objCategory.getCategoryName());
-//            ps.setString(2, objCategory.getStatus());
-//            ps.setInt(3, objCategory.getCategoryID());
-//            int realizado = ps.executeUpdate();
-//            cn.commit();
-//            if (realizado == 0) {
-//                throw new SQLException("Categoria no existe!");
-//            }
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex.getMessage());
-//        } catch (Exception e) {
-//            throw new RuntimeException("No se tiene acceso al servidor");
-//        } finally {
-//            try {
-//                if (cn != null) {
-//                    cn.close();
-//                }
-//            } catch (Exception ex) {
-//            }
-//        }
+        Connection cn = null;
+        try {
+            cn = AccesoDB.getConnection();
+            StringBuilder query = new StringBuilder();
+            query.append("UPDATE Products SET Status = ? WHERE ProductID = ?");
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, "INA");
+            ps.setString(2, objProduct.getProductID());
+            int realizado = ps.executeUpdate();
+            if (realizado == 0) {
+                throw new SQLException("Producto no existe!");
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("No se tiene acceso al servidor");
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception ex) {
+            }
+        }
     }
 
     public Products getProductById(String _idProduct) {
@@ -128,11 +125,12 @@ public class ProductsDAO {
         try {
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT ProductID,ProductName,UnitPrice,UnitsInStock,Status,RegDate,CategoryID FROM Products WHERE ProductID= ?");
+            query.append("SELECT ProductID,ProductName,UnitPrice,UnitsInStock,Status,RegDate,CategoryID FROM Products WHERE ProductID= ? and Status=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, _idProduct);
+            ps.setString(2, "ACT");
             ResultSet rs = ps.executeQuery();
-            
+
             rs.next();
             Products objProduct = new Products();
             objProduct.setProductID(rs.getString("ProductID"));
@@ -145,7 +143,7 @@ public class ProductsDAO {
             return objProduct;
         } catch (SQLException ex) {
             return null;
-         //   throw new RuntimeException(ex.getMessage());
+            //   throw new RuntimeException(ex.getMessage());
         } catch (Exception e) {
             throw new RuntimeException("No se tiene acceso al servidor");
         } finally {
@@ -164,8 +162,9 @@ public class ProductsDAO {
             List<Products> lstproducts = new ArrayList<>();
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT * FROM Products");
+            query.append("SELECT * FROM Products WHERE Status=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, "ACT");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

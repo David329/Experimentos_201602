@@ -54,7 +54,7 @@
                     <td><%=p.getStatus()%></td>
                     <td><%=p.getRegDate()%></td>
                     <td><%=p.getCategoryID()%></td>
-                    <td><a href="ServletEliminar?cod=<%=p.getProductID()%>">Elimnar</a></td>
+                    <td><a href="ServletDeleteProduct?productid=<%=p.getProductID()%>">Elimnar</a></td>
                 </tr>                
                 <%}%>
             </tbody>

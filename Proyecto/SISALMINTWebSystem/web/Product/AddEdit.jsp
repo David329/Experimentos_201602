@@ -16,7 +16,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script>
             $(document).ready(function () {
-                $("#RegDate").datepicker();
+                $("#regdate").datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
             });
         </script>
     </head>
@@ -26,7 +28,7 @@
             <table border="1">
                 <tbody>
                     <tr>
-                        <td>ProductID</td><td><input value="<%=objproduct == null ? "" : objproduct.getProductID()%>" <%=objproduct == null ? "" : "disabled"%> id="productid" type="text" name="productid" data-error="#errNm1"></td>
+                        <td>ProductID</td><td><input value="<%=objproduct == null ? "" : objproduct.getProductID()%>" <%=objproduct == null ? "" : "readonly"%> id="productid" type="text" name="productid" data-error="#errNm1"></td>
                     </tr>
                     <tr>
                         <td>ProductName</td><td><input value="<%=objproduct == null ? "" : objproduct.getProductName()%>" id="productname" type="text" name="productname" data-error="#errNm2"></td>
@@ -41,7 +43,7 @@
                         <td>Status</td><td><input value="<%=objproduct == null ? "" : objproduct.getStatus()%>" id="status" type="text" name="status" data-error="#errNm5"></td>
                     </tr>
                     <tr>
-                        <td>RegDate</td><td><input value="<%=objproduct == null ? "" : objproduct.getRegDate()%>" id="RegDate" type="text" name="RegDate" data-error="#errNm6"></td>
+                        <td>RegDate</td><td><input value="<%=objproduct == null ? "" : objproduct.getRegDate()%>" id="regdate" type="text" name="regdate" data-error="#errNm6"></td>
                     </tr>
                     <tr>
                         <td>CategoryID</td><td><input value="<%=objproduct == null ? "" : objproduct.getCategoryID()%>" id="categoryid" type="text" name="categoryid" data-error="#errNm7"></td>

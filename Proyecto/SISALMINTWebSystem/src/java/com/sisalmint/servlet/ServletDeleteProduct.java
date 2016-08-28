@@ -9,10 +9,6 @@ import com.sisalmint.entity.Products;
 import com.sisalmint.service.ServiceProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author David
  */
-@WebServlet(name = "ServletAddEditProduct", urlPatterns = {"/ServletAddEditProduct"})
-public class ServletAddEditProduct extends HttpServlet {
+@WebServlet(name = "ServletDeleteProduct", urlPatterns = {"/ServletDeleteProduct"})
+public class ServletDeleteProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +34,12 @@ public class ServletAddEditProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServiceProducts sp = new ServiceProducts();
-        String editar = request.getParameter("editar");
 
-        Products product = new Products();
-        product.setProductID(request.getParameter("productid"));
-        product.setProductName(request.getParameter("productname"));
-        product.setUnitPrice(new BigDecimal(request.getParameter("unitprice")));
-        product.setUnitsInStock(Integer.parseInt(request.getParameter("unitsinstock")));
-        product.setStatus(request.getParameter("status"));
-        product.setRegDate(Date.valueOf(request.getParameter("regdate")));
-        product.setCategoryID(Integer.parseInt(request.getParameter("categoryid")));
+        String ProductID = request.getParameter("productid");
+        Products objProduct;
 
-        if ("1".equals(editar)) {
-            sp.editProduct(product);
-        } else {
-            sp.addProduct(product);
+        if (ProductID != null) {
+            sp.deleteProduct(sp.getProductById(ProductID));
         }
 
         request.getRequestDispatcher("Principal.jsp").forward(request, response);
