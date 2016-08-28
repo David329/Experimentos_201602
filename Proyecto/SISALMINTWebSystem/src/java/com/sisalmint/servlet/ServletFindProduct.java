@@ -6,6 +6,7 @@
 package com.sisalmint.servlet;
 
 import com.sisalmint.entity.Products;
+import com.sisalmint.service.ServiceProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,16 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.sisalmint.service.ServiceProducts;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author David
  */
-@WebServlet(name = "ServletListProduct", urlPatterns = {"/ServletListProduct"})
-public class ServletListProduct extends HttpServlet {
+@WebServlet(name = "ServletFindProduct", urlPatterns = {"/ServletFindProduct"})
+public class ServletFindProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +34,16 @@ public class ServletListProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServiceProducts sp = new ServiceProducts();
-        String pname = request.getParameter("productname");
 
-        if (pname == null) {
-            request.setAttribute("ListProduct", sp.getProducts());
-        } else {
-            List<Products> lst = new ArrayList<>();
-            Products product = sp.getProductById(pname);
+        String ProductID = request.getParameter("productid");
+        Products objProduct;
 
-            if (product != null) {
-                lst.add(product);
-            }
-
-            request.setAttribute("ListProduct", lst);
+        if (ProductID != null) {
+            objProduct = sp.getProductById(ProductID);
+            request.setAttribute("objproduct", objProduct);
         }
 
-        request.getRequestDispatcher("Product/List.jsp").forward(request, response);
+        request.getRequestDispatcher("Product/AddEdit.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

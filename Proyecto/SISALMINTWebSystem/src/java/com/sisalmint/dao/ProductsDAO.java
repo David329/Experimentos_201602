@@ -144,7 +144,8 @@ public class ProductsDAO {
             objProduct.setCategoryID(rs.getInt("CategoryID"));
             return objProduct;
         } catch (SQLException ex) {
-            throw new RuntimeException(ex.getMessage());
+            return null;
+         //   throw new RuntimeException(ex.getMessage());
         } catch (Exception e) {
             throw new RuntimeException("No se tiene acceso al servidor");
         } finally {

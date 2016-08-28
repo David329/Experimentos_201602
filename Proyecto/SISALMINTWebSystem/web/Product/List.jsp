@@ -47,7 +47,7 @@
             <tbody>
                 <% for (Products p : lista) {%>
                 <tr>
-                    <td><a href="ServletActualiza?cod=<%=p.getProductID()%>"><%=p.getProductID()%></a></td>
+                    <td><a href="ServletFindProduct?productid=<%=p.getProductID()%>"><%=p.getProductID()%></a></td>
                     <td><%=p.getProductName()%></td>
                     <td><%=p.getUnitPrice()%></td>
                     <td><%=p.getUnitsInStock()%></td>

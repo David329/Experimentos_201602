@@ -6,23 +6,25 @@
 package com.sisalmint.servlet;
 
 import com.sisalmint.entity.Products;
+import com.sisalmint.service.ServiceProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.sisalmint.service.ServiceProducts;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author David
  */
-@WebServlet(name = "ServletListProduct", urlPatterns = {"/ServletListProduct"})
-public class ServletListProduct extends HttpServlet {
+@WebServlet(name = "ServletAddEditProduct", urlPatterns = {"/ServletAddEditProduct"})
+public class ServletAddEditProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +38,33 @@ public class ServletListProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServiceProducts sp = new ServiceProducts();
-        String pname = request.getParameter("productname");
+        String editar = request.getParameter("editar");
 
-        if (pname == null) {
-            request.setAttribute("ListProduct", sp.getProducts());
+        String as = request.getParameter("RegDate");
+        String bdate = request.getParameter("RegDate").replace("/", "-");
+
+        SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String reformattedStr = myFormat.format(fromUser.parse(inputString));
+        
+        Date date = parseDate("19/05/2009", "dd/MM/yyyy");
+
+        Products product = new Products();
+        product.setProductID(request.getParameter("productid"));
+        product.setProductName(request.getParameter("productname"));
+        product.setUnitPrice(new BigDecimal(request.getParameter("unitprice")));
+        product.setUnitsInStock(Integer.parseInt(request.getParameter("unitsinstock")));
+        product.setStatus(request.getParameter("status"));
+        product.setRegDate(Date.valueOf(bdate));
+        product.setCategoryID(Integer.parseInt(request.getParameter("categoryid")));
+
+        if ("1".equals(editar)) {
+            sp.editProduct(product);
         } else {
-            List<Products> lst = new ArrayList<>();
-            Products product = sp.getProductById(pname);
-
-            if (product != null) {
-                lst.add(product);
-            }
-
-            request.setAttribute("ListProduct", lst);
+            sp.addProduct(product);
         }
 
-        request.getRequestDispatcher("Product/List.jsp").forward(request, response);
+        request.getRequestDispatcher("Principal.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

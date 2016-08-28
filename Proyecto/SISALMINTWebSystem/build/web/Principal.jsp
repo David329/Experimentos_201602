@@ -15,7 +15,7 @@
         <h1>PRINCIPAL</h1>
 <!--CON PARAMETROS        1.<a href="ServletListProduct?par1=value1&par2=value2"> Catalago</a><BR>-->
         1.<a href="ServletListProduct"> Catalago</a><BR>
-        2. <a href="Product/AddEdit.jsp">Registro de Producto</a><BR>
+        2. <a href="ServletFindProduct">Registro de Producto</a><BR>
         4. <a href="index.html">Salir de Sesion</a>
     </body>
 </html>
