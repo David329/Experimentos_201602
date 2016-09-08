@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.sisalmint.entity;
-import java.sql.Date;
 /**
  *
  * @author David
@@ -16,8 +15,6 @@ public class Admin {
     private String FirstName;
     private String LastName;
     private String Email;
-    private Date BirthDate;
-    private String Status;
 
     public String getAdminID() {
         return AdminID;
@@ -65,21 +62,5 @@ public class Admin {
 
     public void setEmail(String Email) {
         this.Email = Email;
-    }
-
-    public Date getBirthDate() {
-        return BirthDate;
-    }
-
-    public void setBirthDate(Date BirthDate) {
-        this.BirthDate = BirthDate;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
     }    
 }

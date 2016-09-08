@@ -5,10 +5,13 @@
  */
 package com.sisalmint.servlet;
 
+import com.sisalmint.entity.Categories;
 import com.sisalmint.entity.Products;
+import com.sisalmint.service.ServiceCategories;
 import com.sisalmint.service.ServiceProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +37,8 @@ public class ServletFindProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServiceProducts sp = new ServiceProducts();
+        ServiceCategories sc = new ServiceCategories();
+        List<Categories> lsc = sc.getCategories();
 
         String ProductID = request.getParameter("productid");
         Products objProduct;
@@ -43,7 +48,11 @@ public class ServletFindProduct extends HttpServlet {
             request.setAttribute("objproduct", objProduct);
         }
 
+        request.setAttribute("lstcategories", lsc);
         request.getRequestDispatcher("Product/AddEdit.jsp").forward(request, response);
+        for(Categories s : lsc){
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

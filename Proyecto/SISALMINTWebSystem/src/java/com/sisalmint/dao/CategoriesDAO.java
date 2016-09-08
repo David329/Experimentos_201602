@@ -35,10 +35,9 @@ public class CategoriesDAO {
             }
 
             query = new StringBuilder();
-            query.append("INSERT INTO Categories(CategoryName,Status) VALUES(?, ?)");
+            query.append("INSERT INTO Categories(CategoryName) VALUES(?)");
             ps = cn.prepareStatement(query.toString());
             ps.setString(1, objCategory.getCategoryName());
-            ps.setString(2, objCategory.getStatus());
             ps.executeUpdate();
             cn.commit();
 
@@ -61,11 +60,10 @@ public class CategoriesDAO {
         try {
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("UPDATE Categories SET CategoryName = ?,Status = ? WHERE CategoryID = ?");
+            query.append("UPDATE Categories SET CategoryName = ? WHERE CategoryID = ?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, objCategory.getCategoryName());
-            ps.setString(2, objCategory.getStatus());
-            ps.setInt(3, objCategory.getCategoryID());
+            ps.setInt(2, objCategory.getCategoryID());
             int realizado = ps.executeUpdate();
             if (realizado == 0) {
                 throw new SQLException("Categoria no existe!");
@@ -89,10 +87,9 @@ public class CategoriesDAO {
         try {
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("UPDATE Categories SET Status = ? WHERE CategoryID = ?");
+            query.append("DELETE FROM Categories WHERE CategoryID = ?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
-            ps.setString(1, "INA");
-            ps.setInt(2, objCategory.getCategoryID());
+            ps.setInt(1, objCategory.getCategoryID());
             int realizado = ps.executeUpdate();
             if (realizado == 0) {
                 throw new SQLException("Categoria no existe!");
@@ -116,16 +113,14 @@ public class CategoriesDAO {
         try {
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT CategoryID,CategoryName,Status FROM Categories WHERE CategoryID=? and Status=?");
+            query.append("SELECT CategoryID,CategoryName,Status FROM Categories WHERE CategoryID=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, _idCategory);
-            ps.setString(2, "ACT");
             ResultSet rs = ps.executeQuery();
 
             Categories objCategory = new Categories();
             objCategory.setCategoryID(rs.getInt("CategoryID"));
             objCategory.setCategoryName(rs.getString("CategoryName"));
-            objCategory.setStatus(rs.getString("Status"));
             return objCategory;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -147,16 +142,14 @@ public class CategoriesDAO {
             List<Categories> lstcategories = new ArrayList<>();
             cn = AccesoDB.getConnection();
             StringBuilder query = new StringBuilder();
-            query.append("SELECT * FROM Categories WHERE Status=?");
+            query.append("SELECT * FROM Categories");
             PreparedStatement ps = cn.prepareStatement(query.toString());
-            ps.setString(1, "ACT");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Categories a = new Categories();
                 a.setCategoryID(rs.getInt("CategoryID"));
                 a.setCategoryName(rs.getString("CategoryName"));
-                a.setStatus(rs.getString("Status"));
 
                 lstcategories.add(a);
             }

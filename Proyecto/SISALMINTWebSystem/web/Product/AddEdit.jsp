@@ -4,6 +4,8 @@
     Author     : David
 --%>
 
+<%@page import="com.sisalmint.entity.Categories"%>
+<%@page import="java.util.List"%>
 <%@page import="com.sisalmint.entity.Products"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +25,9 @@
         </script>
     </head>
     <body>
+
         <% Products objproduct = (Products) request.getAttribute("objproduct");%>
+        <% List<Categories> lstc = (List<Categories>) request.getAttribute("lstcategories");%>
         <form action="ServletAddEditProduct?editar=<%=objproduct == null ? "0" : "1"%>" method="POST" id="miForm" name="miForm" novalidate="novalidate">
             <table border="1">
                 <tbody>
@@ -34,19 +38,32 @@
                         <td>ProductName</td><td><input value="<%=objproduct == null ? "" : objproduct.getProductName()%>" id="productname" type="text" name="productname" data-error="#errNm2"></td>
                     </tr>
                     <tr>
-                        <td>UnitPrice</td><td><input value="<%=objproduct == null ? "" : objproduct.getUnitPrice()%>" id="unitprice" type="text" name="unitprice" data-error="#errNm3"></td>
+                        <td>Brand</td><td><input value="<%=objproduct == null ? "" : objproduct.getBrand()%>" id="brand" type="text" name="brand" data-error="#errNm3"></td>
                     </tr>
                     <tr>
-                        <td>UnitsInStock</td><td><input value="<%=objproduct == null ? "" : objproduct.getUnitsInStock()%>" id="unitsinstock" type="text" name="unitsinstock" data-error="#errNm4"></td>
+                        <td>Model</td><td><input value="<%=objproduct == null ? "" : objproduct.getModel()%>" id="model" type="text" name="model" data-error="#errNm4"></td>
                     </tr>
                     <tr>
-                        <td>Status</td><td><input value="<%=objproduct == null ? "" : objproduct.getStatus()%>" id="status" type="text" name="status" data-error="#errNm5"></td>
+                        <td>Registration Date</td><td><input value="<%=objproduct == null ? "" : objproduct.getRegDate()%>" id="regdate" type="text" name="regdate" data-error="#errNm5"></td>
                     </tr>
                     <tr>
-                        <td>RegDate</td><td><input value="<%=objproduct == null ? "" : objproduct.getRegDate()%>" id="regdate" type="text" name="regdate" data-error="#errNm6"></td>
+                        <td>Supplier</td><td><input value="<%=objproduct == null ? "" : objproduct.getSupplier()%>" id="supplier" type="text" name="supplier" data-error="#errNm6"></td>
+                    </tr>                    
+                    <tr>
+                        <td>UnitPrice</td><td><input value="<%=objproduct == null ? "" : objproduct.getUnitPrice()%>" id="unitprice" type="text" name="unitprice" data-error="#errNm7"></td>
                     </tr>
                     <tr>
-                        <td>CategoryID</td><td><input value="<%=objproduct == null ? "" : objproduct.getCategoryID()%>" id="categoryid" type="text" name="categoryid" data-error="#errNm7"></td>
+                        <td>UnitsInStock</td><td><input value="<%=objproduct == null ? "" : objproduct.getUnitsInStock()%>" id="unitsinstock" type="text" name="unitsinstock" data-error="#errNm8"></td>
+                    </tr>  
+                    <tr>
+                        <td>CategoryID</td>
+                        <td>
+                            <select name="categoryid">
+                                <%for (Categories c : lstc) {%>
+                                <option value=<%=c.getCategoryID()%>><%=c.getCategoryName()%></option>
+                                <%}%>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td><input id="idRegistrar" name="idRegistrar" type="submit" value="Registrar"></td>

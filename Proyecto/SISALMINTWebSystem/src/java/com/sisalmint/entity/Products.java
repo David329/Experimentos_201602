@@ -14,10 +14,12 @@ import java.math.BigDecimal;
 public class Products {
     private String ProductID;
     private String ProductName;
+    private String Brand;
+    private String Model;
+    private Date RegDate;
+    private String Supplier;
     private BigDecimal UnitPrice;
     private int UnitsInStock;
-    private String Status;
-    private Date RegDate;
     private int CategoryID;
 
     public String getProductID() {
@@ -36,6 +38,38 @@ public class Products {
         this.ProductName = ProductName;
     }
 
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String Brand) {
+        this.Brand = Brand;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public void setModel(String Model) {
+        this.Model = Model;
+    }
+
+    public Date getRegDate() {
+        return RegDate;
+    }
+
+    public void setRegDate(Date RegDate) {
+        this.RegDate = RegDate;
+    }
+
+    public String getSupplier() {
+        return Supplier;
+    }
+
+    public void setSupplier(String Supplier) {
+        this.Supplier = Supplier;
+    }
+
     public BigDecimal getUnitPrice() {
         return UnitPrice;
     }
@@ -52,29 +86,11 @@ public class Products {
         this.UnitsInStock = UnitsInStock;
     }
 
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-
-    public Date getRegDate() {
-        return RegDate;
-    }
-
-    public void setRegDate(Date RegDate) {
-        this.RegDate = RegDate;
-    }
-
     public int getCategoryID() {
         return CategoryID;
     }
 
     public void setCategoryID(int CategoryID) {
         this.CategoryID = CategoryID;
-    }
-
-    
+    }    
 }

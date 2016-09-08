@@ -37,10 +37,12 @@
                 <tr>
                     <th>ProductID</th>
                     <th>ProductName</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>RegDate</th>>
+                    <th>Supplier</th>
                     <th>UnitPrice</th>
                     <th>UnitsInStock</th>
-                    <th>Status</th>
-                    <th>RegDate</th>
                     <th>CategoryID</th>
                 </tr>
             </thead>
@@ -49,10 +51,12 @@
                 <tr>
                     <td><a href="ServletFindProduct?productid=<%=p.getProductID()%>"><%=p.getProductID()%></a></td>
                     <td><%=p.getProductName()%></td>
+                    <td><%=p.getBrand()%></td>
+                    <td><%=p.getModel()%></td>
+                    <td><%=p.getRegDate()%></td>
+                    <td><%=p.getSupplier()%></td>
                     <td><%=p.getUnitPrice()%></td>
                     <td><%=p.getUnitsInStock()%></td>
-                    <td><%=p.getStatus()%></td>
-                    <td><%=p.getRegDate()%></td>
                     <td><%=p.getCategoryID()%></td>
                     <td><a href="ServletDeleteProduct?productid=<%=p.getProductID()%>">Elimnar</a></td>
                 </tr>                

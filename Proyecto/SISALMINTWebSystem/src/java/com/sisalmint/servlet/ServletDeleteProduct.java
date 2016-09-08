@@ -36,10 +36,10 @@ public class ServletDeleteProduct extends HttpServlet {
         ServiceProducts sp = new ServiceProducts();
 
         String ProductID = request.getParameter("productid");
-        Products objProduct;
+        Products objProduct=sp.getProductById(ProductID);
 
         if (ProductID != null) {
-            sp.deleteProduct(sp.getProductById(ProductID));
+            sp.deleteProduct(objProduct);
         }
 
         request.getRequestDispatcher("Principal.jsp").forward(request, response);

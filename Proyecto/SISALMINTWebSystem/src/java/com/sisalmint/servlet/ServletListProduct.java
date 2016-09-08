@@ -41,7 +41,7 @@ public class ServletListProduct extends HttpServlet {
         if (pname == null) {
             request.setAttribute("ListProduct", sp.getProducts());
         } else {
-            List<Products> lst = new ArrayList<>();
+            List<Products> lst = new ArrayList<>();//chekar esto creo q esta mal
             Products product = sp.getProductById(pname);
 
             if (product != null) {

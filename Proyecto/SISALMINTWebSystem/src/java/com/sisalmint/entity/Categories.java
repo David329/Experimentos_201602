@@ -12,8 +12,7 @@ package com.sisalmint.entity;
 public class Categories {
     private int CategoryID;
     private String CategoryName;
-    private String Status;
-
+    
     public int getCategoryID() {
         return CategoryID;
     }
@@ -29,14 +28,4 @@ public class Categories {
     public void setCategoryName(String CategoryName) {
         this.CategoryName = CategoryName;
     }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-    
-    
 }

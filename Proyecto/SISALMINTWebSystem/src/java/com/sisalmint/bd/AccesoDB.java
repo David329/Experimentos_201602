@@ -20,8 +20,6 @@ public final class AccesoDB {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String url = "jdbc:mysql://localhost/DBSISALMINT";
             return DriverManager.getConnection(url, "root", "root");
-//            Connection  asd=DriverManager.getConnection("jdbc:mysql://localhost/dbsisalmint", "root", "root");
-//            return DriverManager.getConnection("jdbc:mysql://localhost/dbsisalmint", "", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

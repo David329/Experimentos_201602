@@ -43,10 +43,12 @@ public class ServletAddEditProduct extends HttpServlet {
         Products product = new Products();
         product.setProductID(request.getParameter("productid"));
         product.setProductName(request.getParameter("productname"));
+        product.setBrand(request.getParameter("brand"));
+        product.setModel(request.getParameter("model"));
+        product.setRegDate(Date.valueOf(request.getParameter("regdate")));
+        product.setSupplier(request.getParameter("supplier"));
         product.setUnitPrice(new BigDecimal(request.getParameter("unitprice")));
         product.setUnitsInStock(Integer.parseInt(request.getParameter("unitsinstock")));
-        product.setStatus(request.getParameter("status"));
-        product.setRegDate(Date.valueOf(request.getParameter("regdate")));
         product.setCategoryID(Integer.parseInt(request.getParameter("categoryid")));
 
         if ("1".equals(editar)) {

@@ -28,20 +28,22 @@ public class ProductsDAOTest {
         Products miProduct = new Products();
 
         //SET PROPERTIES
-        String newid = "prueba" + String.valueOf(pDAO.getAllProducts().size());
+        String newid = "prueba" + String.valueOf(pDAO.getProducts().size());
         miProduct.setProductID(newid);
-        miProduct.setCategoryID(1);
         miProduct.setProductName("PruebaDonIan");
+        miProduct.setBrand("BrandIAN");
+        miProduct.setModel("ModelIAN");
         miProduct.setRegDate(Date.valueOf("1999-01-01"));
-        miProduct.setStatus("INA");//PA Q NO SE LISTE
+        miProduct.setSupplier("SupplIAN");
         miProduct.setUnitPrice(BigDecimal.valueOf(12.20));
         miProduct.setUnitsInStock(5);
+        miProduct.setCategoryID(1);
 
         //ADDPRODUCT
         pDAO.addProduct(miProduct);
 
         //GET THE LAST PRODUCT(IN SHORT WORDS: GET "PruebaDonIan")
-        Products DonIan = pDAO.getAllProductsByID(newid);
+        Products DonIan = pDAO.getProductById(newid);
 
         //Expected and Result
         String Expected = DonIan.getProductID();
@@ -59,8 +61,8 @@ public class ProductsDAOTest {
         Products miProduct = new Products();
 
         //GET the last PRODUCT
-        int index = pDAO.getAllProducts().size() - 1;
-        miProduct = pDAO.getAllProducts().get(index);
+        int index = pDAO.getProducts().size() - 1;
+        miProduct = pDAO.getProducts().get(index);
         String Result = miProduct.getProductName();
 
         //Edit Product:"PruebaDonIan"
@@ -70,7 +72,7 @@ public class ProductsDAOTest {
 
         //Refresh object and get Expected
         miProduct=new Products();
-        miProduct = pDAO.getAllProducts().get(index);
+        miProduct = pDAO.getProducts().get(index);
         String Expected = miProduct.getProductName();
 
         //assertNotEquals
@@ -83,7 +85,7 @@ public class ProductsDAOTest {
         ProductsDAO pDAO = new ProductsDAO();
         Products miProduct = new Products();
         
-        //GET AND REMOVE the FIRST PRODUCT, I declare the var size for allocation the size of the list of products
+        //GET AND REMOVE the FIRST PRODUCT, I declare the var size to get the size of the list of products
         int size= pDAO.getProducts().size();
         miProduct = pDAO.getProducts().get(0);
         pDAO.deleteProduct(miProduct);
@@ -103,7 +105,7 @@ public class ProductsDAOTest {
         Products miProduct = new Products();
         
         //GET THE ELEMENT PRODUCTID="P1"
-        String ID="P1";
+        String ID=pDAO.getProducts().get(0).getProductID();
         miProduct = pDAO.getProductById(ID);
         
         //Expected and Result
