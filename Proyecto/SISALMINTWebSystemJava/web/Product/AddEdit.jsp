@@ -24,6 +24,7 @@
     </head>
     <body>
         <% Products objproduct = (Products) request.getAttribute("objproduct");%>
+        
         <form action="ServletAddEditProduct?editar=<%=objproduct == null ? "0" : "1"%>" method="POST" id="miForm" name="miForm" novalidate="novalidate">
             <table border="1">
                 <tbody>
@@ -49,11 +50,13 @@
                         <td>CategoryID</td><td><input value="<%=objproduct == null ? "" : objproduct.getCategoryID()%>" id="categoryid" type="text" name="categoryid" data-error="#errNm7"></td>
                     </tr>
                     <tr>
-                        <td><input id="idRegistrar" name="idRegistrar" type="submit" value="Registrar"></td>
+                        <td><input id="idRegistrar" name="idRegistrar" type="submit" value="<%=objproduct == null ? "Registar" : "Editar"%>"></td>
                         <td><input type="reset" value="Cancelar"></td>
                     </tr>
                 </tbody>
             </table>
+            <h2><%=request.getAttribute("mimensaje") == null ? "" : request.getAttribute("mimensaje").toString()%></h2>
+            <br/>
             <a href="Principal.jsp">Regresar</a>            
         </form>
     </body>

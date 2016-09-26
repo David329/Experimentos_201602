@@ -31,7 +31,7 @@ public class ProductsDAO {
             ps.setString(1, objProduct.getProductID());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                throw new SQLException("El codigo del producto ya existe");
+                return;
             }
 
             query = new StringBuilder();
@@ -128,6 +128,42 @@ public class ProductsDAO {
             query.append("SELECT ProductID,ProductName,UnitPrice,UnitsInStock,Status,RegDate,CategoryID FROM Products WHERE ProductID= ? and Status=?");
             PreparedStatement ps = cn.prepareStatement(query.toString());
             ps.setString(1, _idProduct);
+            ps.setString(2, "ACT");
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            Products objProduct = new Products();
+            objProduct.setProductID(rs.getString("ProductID"));
+            objProduct.setProductName(rs.getString("ProductName"));
+            objProduct.setUnitPrice(rs.getBigDecimal("UnitPrice"));
+            objProduct.setUnitsInStock(rs.getInt("UnitsInStock"));
+            objProduct.setStatus(rs.getString("Status"));
+            objProduct.setRegDate(rs.getDate("RegDate"));
+            objProduct.setCategoryID(rs.getInt("CategoryID"));
+            return objProduct;
+        } catch (SQLException ex) {
+            return null;
+            //   throw new RuntimeException(ex.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("No se tiene acceso al servidor");
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception ex) {
+            }
+        }
+    }
+    
+    public Products getProductByName(String _NameProduct) {
+        Connection cn = null;
+        try {
+            cn = AccesoDB.getConnection();
+            StringBuilder query = new StringBuilder();
+            query.append("SELECT ProductID,ProductName,UnitPrice,UnitsInStock,Status,RegDate,CategoryID FROM Products WHERE ProductName= ? and Status=?");
+            PreparedStatement ps = cn.prepareStatement(query.toString());
+            ps.setString(1, _NameProduct);
             ps.setString(2, "ACT");
             ResultSet rs = ps.executeQuery();
 

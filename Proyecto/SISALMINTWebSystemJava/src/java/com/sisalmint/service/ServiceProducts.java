@@ -35,6 +35,11 @@ public class ServiceProducts {
         return objProductDAO.getProductById(ProductID);
     }
     
+    public Products getProductByName(String ProductName) {
+        ProductsDAO objProductDAO = new ProductsDAO();
+        return objProductDAO.getProductByName(ProductName);
+    }
+    
     public List<Products> getProducts(){
         ProductsDAO objProductDAO = new ProductsDAO();
         return objProductDAO.getProducts();

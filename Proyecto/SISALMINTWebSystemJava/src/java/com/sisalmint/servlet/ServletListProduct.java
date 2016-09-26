@@ -38,11 +38,11 @@ public class ServletListProduct extends HttpServlet {
         ServiceProducts sp = new ServiceProducts();
         String pname = request.getParameter("productname");
 
-        if (pname == null) {
+        if (pname==null||pname.equals("")) {
             request.setAttribute("ListProduct", sp.getProducts());
         } else {
             List<Products> lst = new ArrayList<>();
-            Products product = sp.getProductById(pname);
+            Products product = sp.getProductByName(pname);
 
             if (product != null) {
                 lst.add(product);

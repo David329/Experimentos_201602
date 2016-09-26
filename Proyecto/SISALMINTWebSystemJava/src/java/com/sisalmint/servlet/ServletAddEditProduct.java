@@ -39,6 +39,9 @@ public class ServletAddEditProduct extends HttpServlet {
             throws ServletException, IOException {
         ServiceProducts sp = new ServiceProducts();
         String editar = request.getParameter("editar");
+        String mimensaje = "";
+
+        Products obj = sp.getProductById(request.getParameter("productid"));
 
         Products product = new Products();
         product.setProductID(request.getParameter("productid"));
@@ -51,11 +54,20 @@ public class ServletAddEditProduct extends HttpServlet {
 
         if ("1".equals(editar)) {
             sp.editProduct(product);
+            mimensaje = "Se Edito el producto Correctamente";
         } else {
             sp.addProduct(product);
+            mimensaje = "Se Agrego el producto Correctamente";
         }
 
-        request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        if (obj!=null) {
+            mimensaje = "Codigo Repetido del producto";
+            request.setAttribute("mimensaje", mimensaje);
+        } else {
+            request.setAttribute("mimensaje", mimensaje);
+        }
+        request.getRequestDispatcher("Product/AddEdit.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
