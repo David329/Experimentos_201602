@@ -8,6 +8,7 @@ namespace SISALMINTWebSystemNet.ViewModel
     public class LoginViewModel
     {
         private DBSISALMINTEntities context;
+        public Admin objAdmin;
         public Admin LoginAdmin(Admin obj)
         {
             obj = context.Admin.FirstOrDefault(x => x.User == obj.User && x.Password == obj.Password);

@@ -10,30 +10,25 @@ namespace SISALMINTWebSystemNet.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            LoginViewModel objViewModel = new LoginViewModel();
+            return View(objViewModel);
         }
         [HttpPost]
         public ActionResult Login(LoginViewModel ObjViewModel)
         {
-            return null;
-            //try
-            //{
-            //    var objEnterprise = ObjViewModel.LoginEnterprise(ObjViewModel.ObjEnterprise);
-            //    var objAdmin = ObjViewModel.LoginAdmin(ObjViewModel.ObjEnterprise);
-            //    if (objEnterprise != null)
-            //    {
-            //        Session["objEnterprise"] = objEnterprise; return RedirectToAction("EntInicio", "Enterprise");
-            //    }
-            //    else if (objAdmin != null)
-            //    {
-            //        Session["objAdmin"] = objAdmin; return RedirectToAction("AdmInicio", "Admin");
-            //    }
-            //    return RedirectToAction("Login", "Home");
-            //}
-            //catch (Exception)
-            //{
-            //    return RedirectToAction("Login", "Home");
-            //}
+            try
+            {
+                var objAdmin = ObjViewModel.LoginAdmin(ObjViewModel.objAdmin);
+                if (objAdmin != null)
+                {
+                    Session["objAdmin"] = objAdmin; return RedirectToAction("AdmInicio", "Admin");
+                }
+                return RedirectToAction("Login", "Home");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

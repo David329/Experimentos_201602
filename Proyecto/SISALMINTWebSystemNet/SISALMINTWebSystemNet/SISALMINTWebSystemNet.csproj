@@ -168,6 +168,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +199,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\AdminVM\LstProductsVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -584,10 +586,12 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Layout\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\AdmInicio.cshtml" />
+    <Content Include="Views\Admin\LstProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Layout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
