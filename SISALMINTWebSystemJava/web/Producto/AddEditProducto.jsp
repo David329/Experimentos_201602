@@ -34,6 +34,22 @@
     </head>
 
     <body>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+        <script>
+            function validame() {
+                $("#myform").validate({
+                    rules: {
+                        codigo: {
+                            required: true
+                        }
+                    }
+                });
+            }
+        </script>
+
+
 
         <% Producto objproduct = (Producto) request.getAttribute("objproduct");%>
         <div id="wrapper">
@@ -88,7 +104,7 @@
                     <div class="x_content">
                         <% List<Tipo> listaT = (List) request.getAttribute("LstTipo") == null ? new ArrayList<Tipo>() : (List) request.getAttribute("LstTipo");%>
 
-                        <form class="form-horizontal form-label-left" action="ServletAddEditProduct?editar=<%=objproduct == null ? "0" : "1"%>" novalidate method="post">
+                        <form class="form-horizontal form-label-left" id="myform" action="ServletAddEditProduct?editar=<%=objproduct == null ? "0" : "1"%>" novalidate method="post">
                             <div class="item form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="codigo">
                                     Código: <span class="required">*</span>
@@ -186,7 +202,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <button id="enviar" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Procesar</button>
+                                    <button id="enviar" name="enviar" type="submit" onclick="validame();" class="btn btn-success"><i class="fa fa-save"></i> Procesar</button>
                                     <a class="btn btn-primary" href="LstProducto.jsp"><i class="fa fa-close"></i> Cancelar</a>
                                 </div>
                             </div>						

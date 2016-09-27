@@ -1,0 +1,149 @@
+﻿@model SISALMINTWebSystemNet.ViewModel.ProductoViewModel.AddEditProductoViewModel
+
+@{
+    ViewBag.Title = "AddEditProducto";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    @(string.IsNullOrEmpty(Model.objProducto.Codigo) ? "Agregar" : "Modificar") Producto
+                </h3>
+            </div>
+        </div>
+        <div class="x_content">
+            @if (TempData["objMensaje"] != null)
+            {
+                var kvpMensaje = (KeyValuePair<String, String>)TempData["objMensaje"];
+                String Color = String.Empty;
+                String Header = String.Empty;
+
+                switch (kvpMensaje.Key)
+                {
+                    case "ERR":
+                        Header = "<b><i class='fa fa-exclamation-circle'></i> Error!</b>";
+                        Color = "danger";
+                        break;
+                    case "SUC":
+                        Header = "<b><i class='fa fa-check'></i> Éxito!</b>";
+                        Color = "success";
+                        break;
+                }
+
+                <div class="alert alert-@Color alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    @Html.Raw(Header) @kvpMensaje.Value
+                </div>
+            }
+            <form class="form-horizontal form-label-left" novalidate method="post" action="@Url.Action("AddEditProducto")">
+                @if (!string.IsNullOrEmpty(Model.codigoProducto))
+                {
+                    @Html.HiddenFor(x => x.codigoProducto)
+                    @Html.HiddenFor(x=>x.tieneValor,true)
+                }
+                @if (string.IsNullOrEmpty(Model.codigoProducto))
+                {
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="codigo">
+                            Código: <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(x => x.codigoProducto, new { @type = "text", @id = "codigo", @name = "codigo", @class = "form-control col-md-7 col-xs-12" })
+                        </div>
+                    </div>
+                }
+                
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
+                        Nombre: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.Nombre, new { @type = "text", @id = "nombre", @name = "nombre", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="marca">
+                        Marca: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.Marca, new { @type = "text", @id = "marca", @name = "marca", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tipo">
+                        Tipo: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(x => x.objProducto.TipoId, Model.selectTipos, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modelo">
+                        Modelo: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.Modelo, new { @type = "text", @id = "modelo", @name = "modelo", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fechaIngreso">
+                        Fecha de Ingreso: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.FechaIngreso, new { @type = "text", @id = "fechaIngreso", @name = "fechaIngreso", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="distribuidor">
+                        Distribuidor: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.Distribuidor, new { @type = "text", @id = "distribuidor", @name = "distribuidor", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precio">
+                        Precio de Compra: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.PrecioCompra, new { @type = "text", @id = "precio", @name = "precio", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantidad">
+                        Cantidad: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(x => x.objProducto.CantidadIngresada, new { @type = "text", @id = "cantidad", @name = "cantidad", @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="falla">
+                        Falla de Fábrica: <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.RadioButtonFor(x => x.objProducto.FallaFabrica, "0", new { @checked = true }) No    @Html.RadioButtonFor(x => x.objProducto.FallaFabrica, "1") Sí
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button id="enviar" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Procesar</button>
+                        <a class="btn btn-primary" href="@Url.Action("LstProducto")"><i class="fa fa-close"></i> Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
