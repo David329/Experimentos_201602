@@ -64,7 +64,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="LstProducto.jsp">SISALMINT</a>
+                    <a class="navbar-brand" href="ServletListProduct">SISALMINT</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
@@ -82,7 +82,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="LstProducto.jsp"><i class="fa fa-fw fa-dashboard"></i> Productos</a>
+                            <a href="ServletListProduct"><i class="fa fa-fw fa-dashboard"></i> Productos</a>
                         </li>
                     </ul>
                 </div>
@@ -110,7 +110,7 @@
                                     Código: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getCodigo()%>" <%=objproduct == null ? "" : "readonly"%> id="codigo" name="codigo" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getCodigo()%>" <%=objproduct == null ? "" : "readonly"%> id="codigo" name="codigo" class="form-control col-md-7 col-xs-12" type="text" required = "required" maxlength="15" minlength="3" >
                                 </div>
                             </div>
 
@@ -119,7 +119,7 @@
                                     Nombre: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getNombre()%>" id="nombre" name="nombre" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getNombre()%>" id="nombre" name="nombre" class="form-control col-md-7 col-xs-12" type="text" required = "required" maxlength="100" minlength="4">
                                 </div>
                             </div>
 
@@ -128,7 +128,7 @@
                                     Marca: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getMarca()%>" id="marca" name="marca" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getMarca()%>" id="marca" name="marca" class="form-control col-md-7 col-xs-12" type="text" required = "required" maxlength="60" minlength="1">
                                 </div>
                             </div>
 
@@ -137,7 +137,7 @@
                                     Modelo: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getModelo()%>" id="modelo" name="modelo" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getModelo()%>" id="modelo" name="modelo" class="form-control col-md-7 col-xs-12" type="text" required = "required" maxlength="150" minlength="1" >
                                 </div>
                             </div>
 
@@ -146,7 +146,7 @@
                                     Fecha de Ingreso: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getFechaIngreso()%>" id="fechaingreso" name="fechaingreso" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getFechaIngreso()%>" placeholder="2016-01-01" id="fechaingreso" name="fechaingreso" class="form-control col-md-7 col-xs-12" type="text" required = "required">
                                 </div>
                             </div>
 
@@ -155,7 +155,7 @@
                                     Distribuidor: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getDistribuidor()%>" id="distribuidor" name="distribuidor" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getDistribuidor()%>" id="distribuidor" name="distribuidor" class="form-control col-md-7 col-xs-12" type="text" required = "required" maxlength="100" minlength="2">
                                 </div>
                             </div>
 
@@ -164,7 +164,7 @@
                                     Precio de Compra: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getPrecioCompra()%>" id="precio" name="precio" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getPrecioCompra()%>" id="precio" name="precio" class="form-control col-md-7 col-xs-12" type="number" required = "required" min="0.1" max="100000">
                                 </div>
                             </div>
 
@@ -173,7 +173,7 @@
                                     Cantidad: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input value="<%=objproduct == null ? "" : objproduct.getCantidadIngresada()%>" id="cantidad" name="cantidad" class="form-control col-md-7 col-xs-12" type="text">
+                                    <input value="<%=objproduct == null ? "" : objproduct.getCantidadIngresada()%>" id="cantidad" name="cantidad" class="form-control col-md-7 col-xs-12" type="number" required = "required" min="1" max="10000">
                                 </div>
                             </div>
 
@@ -188,7 +188,7 @@
                             </div>			
 
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tipo">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tipo" required = "required">
                                     Tipo: <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -203,14 +203,13 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
                                     <button id="enviar" name="enviar" type="submit" onclick="validame();" class="btn btn-success"><i class="fa fa-save"></i> Procesar</button>
-                                    <a class="btn btn-primary" href="LstProducto.jsp"><i class="fa fa-close"></i> Cancelar</a>
+                                    <a class="btn btn-default" href="ServletListProduct"><i class="fa fa-close"></i> Cancelar</a>
                                 </div>
                             </div>						
                         </form>
                         <br/>
                         <h2><%=request.getAttribute("mimensaje") == null ? "" : request.getAttribute("mimensaje").toString()%></h2>
                         <br/>
-                        <a class="btn btn-danger" href="ServletListProduct">Regresar</a>   
                     </div>       
                 </div>
                 <!-- /.container-fluid -->
@@ -226,6 +225,16 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="${pageContext.request.contextPath}/Content/Template/js/bootstrap.min.js"></script>
+        
+        <script src="${pageContext.request.contextPath}/Content/validation/jquery.validate.js"></script>
+        <script src="${pageContext.request.contextPath}/Content/validation/jquery.js"></script>
+        <script src="${pageContext.request.contextPath}/Content/validation/messages_es_PE.js"></script>
+        
+        <script>
+            $(document).ready(function () {
+                $("form1").validate();
+            });
+        </script>
 
     </body>
 

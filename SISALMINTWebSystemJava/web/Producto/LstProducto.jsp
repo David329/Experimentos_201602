@@ -86,7 +86,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
                         <form action="ServletListProduct" method="POST" name="miForm">
                             <div class="input-group">						
-                                <input type="text" class="form-control" name="productname" placeholder="Texto a buscar">
+                                <input type="text" class="form-control" name="productname" placeholder="Nombre de producto a buscar">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
@@ -94,9 +94,10 @@
                         </form>
                     </div>
 
+
                     <% List<Producto> lista = (List) request.getAttribute("ListProduct") == null ? new ArrayList<Producto>() : (List) request.getAttribute("ListProduct");%>
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-left">
-                        <a href="ServletFindProduct" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar </a>
+                        <a href="ServletFindProduct" class="btn btn-primary"><i class="fa fa-plus"></i> Nuevo Producto </a>
                     </div>
                     <div class="col-lg-12">
                         <div class="table-responsive">
@@ -134,6 +135,8 @@
                                     <%}%>
                                 </tbody>
                             </table>
+                            <% String mensajito = request.getAttribute("eliminado") == null ? "" : request.getAttribute("eliminado").toString();%>
+                            <h3><%=mensajito%></h3>
                         </div>
                     </div>       
                 </div>

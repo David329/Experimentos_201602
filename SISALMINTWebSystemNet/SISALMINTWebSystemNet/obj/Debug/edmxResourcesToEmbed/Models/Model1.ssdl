@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSISALMINTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Passw" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Modelo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+    <Property Name="Distribuidor" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PrecioCompra" Type="float" Nullable="false" />
+    <Property Name="CantidadIngresada" Type="int" Nullable="false" />
+    <Property Name="FallaFabrica" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TipoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="TipoId" />
+    </Key>
+    <Property Name="TipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Producto__TipoId__145C0A3F">
+    <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo">
+        <PropertyRef Name="TipoId" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="TipoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBSISALMINTModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Producto__TipoId__145C0A3F" Association="Self.FK__Producto__TipoId__145C0A3F">
+      <End Role="Tipo" EntitySet="Tipo" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

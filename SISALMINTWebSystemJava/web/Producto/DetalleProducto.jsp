@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="LstProducto.jsp">SISALMINT</a>
+                    <a class="navbar-brand" href="ServletListProduct">SISALMINT</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
@@ -66,7 +66,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="LstProducto.jsp"><i class="fa fa-fw fa-dashboard"></i> Productos</a>
+                            <a href="ServletListProduct"><i class="fa fa-fw fa-dashboard"></i> Productos</a>
                         </li>
                     </ul>
                 </div>
@@ -181,12 +181,16 @@
                                         <%}%>
                                     </select>
                                 </div>
-                            </div>						
+                            </div>	
+                            <div class="item form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <a class="btn btn-default" href="ServletListProduct"><i class="fa fa-mail-reply"></i> Regresar</a>
+                                </div>
+                            </div>
                         </form>
                         <br/>
                         <h2><%=request.getAttribute("mimensaje") == null ? "" : request.getAttribute("mimensaje").toString()%></h2>
-                        <br/>
-                        <a class="btn btn-danger" href="LstProducto.jsp">Regresar</a>   
+                        <br/>                         
                     </div>       
                 </div>
                 <!-- /.container-fluid -->

@@ -46,7 +46,9 @@ public class ServletLogin extends HttpServlet {
         if (res) {
             response.sendRedirect("/SISALMINTWebSystemJava/ServletListProduct");
         } else {
-            request.getRequestDispatcher("index.html").forward(request, response);
+            String mimensajito="Error! Credenciales incorrectas.";
+            request.setAttribute("mimensajito",mimensajito);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

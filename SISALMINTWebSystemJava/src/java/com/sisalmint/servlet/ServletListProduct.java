@@ -35,7 +35,11 @@ public class ServletListProduct extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletDeleteProduct sd = new ServletDeleteProduct();
         ServicioProducto sp = new ServicioProducto();
+        
+        String elim = request.getParameter("eliminado")==null?"":request.getParameter("eliminado");
+        
         String pname = request.getParameter("productname");
 
         List<Producto> lst = new ArrayList<>();
@@ -48,11 +52,9 @@ public class ServletListProduct extends HttpServlet {
             if (product != null) {
                 lst.add(product);
             }
-
             request.setAttribute("ListProduct", lst);
         }
-//        response.sendRedirect("Producto/LstProducto.jsp");
-
+        if(elim.equals("1"))request.setAttribute("eliminado", "Exito! El producto ha sido eliminado.");
         request.getRequestDispatcher("Producto/LstProducto.jsp").forward(request, response);
     }
 

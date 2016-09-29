@@ -41,7 +41,7 @@ public class ServletDeleteProduct extends HttpServlet {
         if (ProductID != null) {
             sp.deleteProduct(sp.getProductById(ProductID));
         }
-        response.sendRedirect("/SISALMINTWebSystemJava/ServletListProduct");
+        response.sendRedirect("/SISALMINTWebSystemJava/ServletListProduct?eliminado=1");
 //        request.getRequestDispatcher("Principal.jsp").forward(request, response);
     }
 

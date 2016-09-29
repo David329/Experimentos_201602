@@ -57,16 +57,16 @@ public class ServletAddEditProduct extends HttpServlet {
 
         if ("1".equals(editar)) {
             sp.editProduct(product);
-            mimensaje = "Se Edito el producto Correctamente";
+            mimensaje = "Éxito! El producto se actualizó correctamente.";
             request.setAttribute("mimensaje", mimensaje);
             request.getRequestDispatcher("Producto/AddEditProducto.jsp").forward(request, response);
         } else {
             sp.addProduct(product);
-            mimensaje = "Se Agrego el producto Correctamente";
+            mimensaje = "Éxito! El producto se agregó correctamente.";
         }
 
         if (obj != null) {
-            mimensaje = "Codigo Repetido del producto";
+            mimensaje = "Error! El código de producto ya existe.";
             request.setAttribute("mimensaje", mimensaje);
         } else {
             request.setAttribute("mimensaje", mimensaje);
