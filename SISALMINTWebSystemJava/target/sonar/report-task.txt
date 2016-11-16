@@ -1,0 +1,5 @@
+projectKey=com.lushoorganization:lusho
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/com.lushoorganization:lusho
+ceTaskId=AVht0qAVtCdZmRggbqbQ
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVht0qAVtCdZmRggbqbQ

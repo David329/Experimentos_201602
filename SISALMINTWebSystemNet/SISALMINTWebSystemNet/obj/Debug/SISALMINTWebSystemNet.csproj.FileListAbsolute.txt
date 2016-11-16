@@ -107,3 +107,4 @@ C:\Rep\SISALMINTWebSystemNet\SISALMINTWebSystemNet\bin\Microsoft.Owin.Security.T
 C:\Rep\SISALMINTWebSystemNet\SISALMINTWebSystemNet\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Rep\SISALMINTWebSystemNet\SISALMINTWebSystemNet\obj\Debug\SISALMINTWebSystemNet.dll
 C:\Rep\SISALMINTWebSystemNet\SISALMINTWebSystemNet\obj\Debug\SISALMINTWebSystemNet.pdb
+C:\Rep\SISALMINTWebSystemNet\SISALMINTWebSystemNet\obj\Debug\SISALMINTWebSystemNet.csprojResolveAssemblyReference.cache
