@@ -38,7 +38,7 @@
                     @Html.Raw(Header) @kvpMensaje.Value
                 </div>
             }
-            <form class="form-horizontal form-label-left" novalidate method="post" action="@Url.Action("AddEditProducto")">
+            <form class="form-horizontal form-label-left" novalidate method="post" action="@Url.Action("AddEditProducto")" id="form1" name="form1">
                 @if (!string.IsNullOrEmpty(Model.codigoProducto))
                 {
                     @Html.HiddenFor(x => x.codigoProducto)
@@ -51,7 +51,7 @@
                             Código: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(x => x.codigoProducto, new { @type = "text", @id = "codigo", @name = "codigo", @class = "form-control col-md-7 col-xs-12" })
+                            @Html.TextBoxFor(x => x.codigoProducto, new { @type = "text", @id = "codigo", @name = "codigo", @class = "form-control col-md-7 col-xs-12", @required = "required", @maxlength = 15, @minlength = 3})
                         </div>
                     </div>
                 }
@@ -61,7 +61,7 @@
                         Nombre: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.Nombre, new { @type = "text", @id = "nombre", @name = "nombre", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.Nombre, new { @type = "text", @id = "nombre", @name = "nombre", @class = "form-control col-md-7 col-xs-12", @required = "required", @maxlength = 100, @minlength = 4 })
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                         Marca: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.Marca, new { @type = "text", @id = "marca", @name = "marca", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.Marca, new { @type = "text", @id = "marca", @name = "marca", @class = "form-control col-md-7 col-xs-12", @required = "required", @maxlength = 60, @minlength = 1 })
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@
                         Tipo: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.DropDownListFor(x => x.objProducto.TipoId, Model.selectTipos, new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.objProducto.TipoId, Model.selectTipos, new { @class = "form-control", @id = "tipo", name = "tipo", @required = "required" })
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@
                         Modelo: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.Modelo, new { @type = "text", @id = "modelo", @name = "modelo", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.Modelo, new { @type = "text", @id = "modelo", @name = "modelo", @class = "form-control col-md-7 col-xs-12", @required = "required", @maxlength = 150, @minlength = 1 })
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                         Fecha de Ingreso: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.FechaIngreso, new { @type = "text", @id = "fechaIngreso", @name = "fechaIngreso", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.FechaIngreso, new { @type = "text", @id = "fechaIngreso", @name = "fechaIngreso", @class = "form-control col-md-7 col-xs-12", @required = "required" })
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                         Distribuidor: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.Distribuidor, new { @type = "text", @id = "distribuidor", @name = "distribuidor", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.Distribuidor, new { @type = "text", @id = "distribuidor", @name = "distribuidor", @class = "form-control col-md-7 col-xs-12", @required = "required", @maxlength = 100, @minlength = 2 })
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                         Precio de Compra: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.PrecioCompra, new { @type = "text", @id = "precio", @name = "precio", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.PrecioCompra, new { @type = "number", @id = "precio", @name = "precio", @class = "form-control col-md-7 col-xs-12", @required = "required", @min = 0.1, @max = 100000 })
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
                         Cantidad: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        @Html.TextBoxFor(x => x.objProducto.CantidadIngresada, new { @type = "text", @id = "cantidad", @name = "cantidad", @class = "form-control col-md-7 col-xs-12" })
+                        @Html.TextBoxFor(x => x.objProducto.CantidadIngresada, new { @type = "number", @id = "cantidad", @name = "cantidad", @class = "form-control col-md-7 col-xs-12", @required = "required", @min = 1, @max = 10000 })
                     </div>
                 </div>
 
@@ -139,7 +139,7 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
                         <button id="enviar" type="submit" class="btn btn-success"><i class="fa fa-save"></i> Procesar</button>
-                        <a class="btn btn-primary" href="@Url.Action("LstProducto")"><i class="fa fa-close"></i> Cancelar</a>
+                        <a class="btn btn-default" href="@Url.Action("LstProducto")"><i class="fa fa-close"></i> Cancelar</a>
                     </div>
                 </div>
             </form>
@@ -147,3 +147,89 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+
+@section scripts {
+    <script src="@Url.Content("~/Content/validation/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Content/validation/jquery.js")"></script>
+    <script src="@Url.Content("~/Content/validation/messages_es_PE.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $("#form1").validate();
+        });
+    </script>
+       @*<script>
+        $("#form1").validate({
+            rules: {
+                codigo: {
+                    required: true
+                },
+                nombre: {
+                    required: true
+                },
+                tipo: {
+                    required: true
+                },
+                marca: {
+                    required: true
+                },
+                modelo: {
+                    required: true
+                },
+
+                fechaIngreso: {
+                    required: true
+                },
+
+                distribuidor: {
+                    required: true
+                },
+
+                precio: {
+                    required: true
+                },
+
+                cantidad: {
+                    required: true
+                }
+            },
+            messages: {
+
+                codigo: {
+                    required: "El código es requerido."
+                },
+                nombre: {
+                    required: "El nombre es requerido."
+                },
+                tipo: {
+                    required: "El tipo es requerido."
+                },
+                marca: {
+                    required: "La marca es requerida."
+                },
+                modelo: {
+                    required: "El modelo es requerido."
+                },
+
+                fechaIngreso: {
+                    required: "La fecha de ingreso es requerida."
+                },
+
+                distribuidor: {
+                    required: "El distribuidor es requerido."
+                },
+
+                precio: {
+                    required: "El precio es requerido."
+                },
+
+                cantidad: {
+                    required: "La cantidad es requerida."
+                }
+            },
+            submitHandler: function () {
+                //
+                alert("Si funciona");
+            }
+        });
+    </script>*@
+}

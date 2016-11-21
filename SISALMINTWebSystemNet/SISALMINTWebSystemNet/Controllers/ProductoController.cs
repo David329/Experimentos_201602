@@ -52,9 +52,21 @@ namespace SISALMINTWebSystemNet.Controllers
                     objViewModel.ModificarProducto(objViewModel.objProducto);
                 }
                 else
-                    objViewModel.RegistrarProducto(objViewModel.objProducto);
+                {
+                    if(!objViewModel.ProductoExiste(objViewModel.objProducto.Codigo))
+                        objViewModel.RegistrarProducto(objViewModel.objProducto);
+                    else
+                    {
+                        TempData["objMensaje"] = new KeyValuePair<String, String>("ERR", "El código de producto ya existe.");
+                        objViewModel.Fill("");
+                        objViewModel.objProducto.FechaIngreso = Convert.ToDateTime("1999-01-01");
+                        return View("AddEditProducto", "_Layout", objViewModel);
+                    }
+                    
+                }
+                   
 
-                String MensajeRespuesta = objViewModel.tieneValor ? "El Producto se actualizó correctamente." : "El Producto se registró correctamente.";
+                String MensajeRespuesta = objViewModel.tieneValor ? "El producto se actualizó correctamente." : "El producto se registró correctamente.";
                 TempData["objMensaje"] = new KeyValuePair<String, String>("SUC", MensajeRespuesta);
 
                 objViewModel.Fill("");
@@ -65,7 +77,7 @@ namespace SISALMINTWebSystemNet.Controllers
             {
                 string a = ex.Message;
                 TempData["objMensaje"] = new KeyValuePair<String, String>("ERR", "Por favor intente más tarde.");
-                return View(objViewModel);
+                return RedirectToAction("AddEditProducto", objViewModel.codigoProducto);
             }
 
         }
@@ -77,13 +89,13 @@ namespace SISALMINTWebSystemNet.Controllers
                 AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
                 objViewModel.EliminarProducto(codigoProducto);
 
-                TempData["objMensaje"] = new KeyValuePair<String, String>("SUC", "El Producto ha sido eliminado.");
+                TempData["objMensaje"] = new KeyValuePair<String, String>("SUC", "El producto ha sido eliminado.");
                 return RedirectToAction("LstProducto");
             }
             catch (Exception)
             {
 
-                TempData["objMensaje"] = new KeyValuePair<String, String>("ERR", "No se ha podido eliminar al Cliente.");
+                TempData["objMensaje"] = new KeyValuePair<String, String>("ERR", "No se ha podido eliminar el producto.");
                 return RedirectToAction("LstProducto");
             }
 

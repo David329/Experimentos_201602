@@ -43,8 +43,6 @@ namespace SISALMINTWebSystemNet.Controllers
             {
                 return RedirectToAction("Index", objViewModel);
             }
-
-
         }
 
     }

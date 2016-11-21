@@ -42,6 +42,15 @@ namespace SISALMINTWebSystemNet.ViewModel.ProductoViewModel
             selectTipos = from t in LstTipo select new SelectListItem { Text = t.Nombre + "[ " + t.TipoId + " ]", Value = t.TipoId.ToString() };
         }
 
+        public bool ProductoExiste(string _codigoProducto)
+        {
+            DBSISALMINTEntities context = new DBSISALMINTEntities();
+            Producto objProducto = context.Producto.FirstOrDefault(x => x.Codigo == _codigoProducto);
+
+            if (objProducto != null) return true;
+            return false;
+        }
+
         public void RegistrarProducto(Producto _objProducto)
         {
             DBSISALMINTEntities context = new DBSISALMINTEntities();
