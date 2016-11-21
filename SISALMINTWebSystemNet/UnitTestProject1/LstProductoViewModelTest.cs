@@ -1,14 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
-using SISALMINTWebSystemNet.Models;
-
+﻿using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
+using NUnit.Framework;
 namespace UnitTestProject1
 {
-    [TestClass]
+    [TestFixture]
     public class LstProductoViewModelTest
     {
-        [TestMethod]
+        [Test]
         public void Fill()
         {
             LstProductoViewModel objViewModel = new LstProductoViewModel();
@@ -16,16 +13,16 @@ namespace UnitTestProject1
             Assert.AreNotEqual(0, objViewModel.LstProducto.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void FillBuscar()
         {
             LstProductoViewModel objViewModel = new LstProductoViewModel();
-            objViewModel.Filtro = "55";
+            objViewModel.Filtro = "999";
             objViewModel.Fill();
-            Assert.AreNotEqual(0, objViewModel.LstProducto.Count);
+            Assert.AreEqual(0, objViewModel.LstProducto.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void FillBuscarFlujoAlternativo()
         {
             LstProductoViewModel objViewModel = new LstProductoViewModel();

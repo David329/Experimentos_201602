@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using SISALMINTWebSystemNet.Models;
 using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
 
 namespace SISALMINTWebSystemNet.Controllers
@@ -39,7 +36,6 @@ namespace SISALMINTWebSystemNet.Controllers
             objViewModel.codigoProducto = objViewModel.objProducto.Codigo;
             return View("AddEditProducto", "_Layout", objViewModel);
         }
-
         [HttpPost]
         public ActionResult AddEditProducto(AddEditProductoViewModel objViewModel)
         {

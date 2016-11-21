@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1019]C:\Users\DavidZilva\Music\Experimentos_201602-master\SISALMINTWebSystemNet\UnitTestProject1\bin\Debug\UnitTestProject1.dll</TopNode>
+  <SelectedNode>[0-1019]C:\Users\DavidZilva\Music\Experimentos_201602-master\SISALMINTWebSystemNet\UnitTestProject1\bin\Debug\UnitTestProject1.dll</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1019]C:\Users\DavidZilva\Music\Experimentos_201602-master\SISALMINTWebSystemNet\UnitTestProject1\bin\Debug\UnitTestProject1.dll" Expanded="true" />
+    <Node UniqueName="[0-1020]UnitTestProject1" Expanded="true" />
+    <Node UniqueName="[0-1009]UnitTestProject1.AddEditProductoViewModelTest" Expanded="true" />
+    <Node UniqueName="[0-1016]UnitTestProject1.DetalleProductoViewModelTest" Expanded="true" />
+    <Node UniqueName="[0-1004]UnitTestProject1.LoginViewModelTest" Expanded="true" />
+    <Node UniqueName="[0-1000]UnitTestProject1.LstProductoViewModelTest" Expanded="true" />
+  </Nodes>
+</VisualState>

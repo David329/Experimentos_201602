@@ -80,7 +80,8 @@ namespace SISALMINTWebSystemNet.ViewModel.ProductoViewModel
         {
             DBSISALMINTEntities context = new DBSISALMINTEntities();
             Producto objProducto = context.Producto.FirstOrDefault(x => x.Codigo == codigoProducto);
-            objProducto.Estado = "INA";
+            context.Producto.Remove(objProducto);
+            //      objProducto.Estado = "INA";
             context.SaveChanges();
         }
     }

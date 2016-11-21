@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\DavidZilva\Music\Experimentos_201602-master\SISALMINTWebSystemNet\UnitTestProject1\bin\Debug\UnitTestProject1.dll" total="15" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2016-11-21" time="18:10:27">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.8000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\NUnit\bin" machine-name="DAVID" user="DavidZilva" user-domain="David" />
+  <culture-info current-culture="es-ES" current-uiculture="es-ES" />
+  <test-suite type="Assembly" name="C:\Users\DavidZilva\Music\Experimentos_201602-master\SISALMINTWebSystemNet\UnitTestProject1\bin\Debug\UnitTestProject1.dll" executed="True" result="Success" success="True" time="5.406" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="UnitTestProject1" executed="True" result="Success" success="True" time="5.397" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="AddEditProductoViewModelTest" executed="True" result="Success" success="True" time="5.222" asserts="0">
+            <results>
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.A_RegistrarProducto" executed="True" result="Success" success="True" time="5.000" asserts="1" />
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.B_ProductoExiste" executed="True" result="Success" success="True" time="0.077" asserts="1" />
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.C_ModificarProducto" executed="True" result="Success" success="True" time="0.030" asserts="1" />
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.D_Fill" executed="True" result="Success" success="True" time="0.046" asserts="1" />
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.E_EliminarPorducto" executed="True" result="Success" success="True" time="0.029" asserts="1" />
+              <test-case name="UnitTestProject1.AddEditProductoViewModelTest.ProductoExisteFlujoAlternativo" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="DetalleProductoViewModelTest" executed="True" result="Success" success="True" time="0.010" asserts="0">
+            <results>
+              <test-case name="UnitTestProject1.DetalleProductoViewModelTest.Fill" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+              <test-case name="UnitTestProject1.DetalleProductoViewModelTest.FillFlujoAlternativo" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="LoginViewModelTest" executed="True" result="Success" success="True" time="0.066" asserts="0">
+            <results>
+              <test-case name="UnitTestProject1.LoginViewModelTest.GetAdmin" executed="True" result="Success" success="True" time="0.038" asserts="1" />
+              <test-case name="UnitTestProject1.LoginViewModelTest.GetAdminFlujoAlternativo" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+              <test-case name="UnitTestProject1.LoginViewModelTest.ValidarLogin" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+              <test-case name="UnitTestProject1.LoginViewModelTest.ValidarLoginFlujoAlternativo" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="LstProductoViewModelTest" executed="True" result="Success" success="True" time="0.085" asserts="0">
+            <results>
+              <test-case name="UnitTestProject1.LstProductoViewModelTest.Fill" executed="True" result="Success" success="True" time="0.004" asserts="1" />
+              <test-case name="UnitTestProject1.LstProductoViewModelTest.FillBuscar" executed="True" result="Success" success="True" time="0.069" asserts="1" />
+              <test-case name="UnitTestProject1.LstProductoViewModelTest.FillBuscarFlujoAlternativo" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

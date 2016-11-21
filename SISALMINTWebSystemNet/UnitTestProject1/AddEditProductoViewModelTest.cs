@@ -1,15 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
 using SISALMINTWebSystemNet.Models;
-
+using NUnit.Framework;
 namespace UnitTestProject1
 {
-    [TestClass]
+    [TestFixture]
     public class AddEditProductoViewModelTest
     {
-        [TestMethod]
-        public void Fill()
+        [Test]
+        public void D_Fill()
         {
             AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
             objViewModel.tieneValor = false;
@@ -18,14 +17,14 @@ namespace UnitTestProject1
             Assert.IsFalse(objViewModel.tieneValor);
         }
 
-        [TestMethod]
-        public void ProductoExiste()
+        [Test]
+        public void B_ProductoExiste()
         {
             AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
-            Assert.IsTrue(objViewModel.ProductoExiste("P01231"));
+            Assert.IsTrue(objViewModel.ProductoExiste("123"));
         }
 
-        [TestMethod]
+        [Test]
         public void ProductoExisteFlujoAlternativo()
         {
             AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
@@ -33,11 +32,15 @@ namespace UnitTestProject1
         }
 
         //Este metodo no pasa proque el codigo se repite
-        [TestMethod]
-        public void RegistrarProducto()
+        [Test]
+        public void A_RegistrarProducto()
         {
+            LstProductoViewModel a = new LstProductoViewModel();
+            a.Fill();
+            int codigo = Int32.Parse(a.LstProducto[a.LstProducto.Count - 1].Codigo) + 1;
             Producto objProducto = new Producto();
-            objProducto.Codigo = "P9999";
+
+            objProducto.Codigo = codigo.ToString();
             objProducto.Nombre = "TV";
             objProducto.Marca = "LG";
             objProducto.Modelo = "fdsf";
@@ -54,11 +57,16 @@ namespace UnitTestProject1
             Assert.IsTrue(!"0".Equals(objProducto.Codigo));
         }
 
-        [TestMethod]
-        public void ModificarProducto()
+        [Test]
+        public void C_ModificarProducto()
         {
+            LstProductoViewModel a = new LstProductoViewModel();
             Producto objProducto = new Producto();
-            objProducto.Codigo = "P9999";
+            a.Fill();
+            int codigo = Int32.Parse(a.LstProducto[a.LstProducto.Count - 1].Codigo);
+
+
+            objProducto.Codigo = codigo.ToString();
             objProducto.Nombre = "TV LG";
             objProducto.Marca = "LG";
             objProducto.Modelo = "fdsf";
@@ -68,18 +76,21 @@ namespace UnitTestProject1
             objProducto.PrecioCompra = 100;
             objProducto.CantidadIngresada = 20;
             objProducto.FallaFabrica = "0";
-            objProducto.Estado = "ACT";  
+            objProducto.Estado = "ACT";
 
             AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
             objViewModel.ModificarProducto(objProducto);
             Assert.IsTrue(objProducto.Nombre.Equals("TV LG"));
         }
 
-        [TestMethod]
-        public void EliminarPorducto()
+        [Test]
+        public void E_EliminarPorducto()
         {
+            LstProductoViewModel a = new LstProductoViewModel();
+            a.Fill();
+            int codigo = Int32.Parse(a.LstProducto[a.LstProducto.Count - 1].Codigo);
             Producto objProducto = new Producto();
-            objProducto.Codigo = "P9999";
+            objProducto.Codigo = codigo.ToString();
             objProducto.Nombre = "TV";
             objProducto.Marca = "LG";
             objProducto.Modelo = "fdsf";
@@ -89,7 +100,7 @@ namespace UnitTestProject1
             objProducto.PrecioCompra = 100;
             objProducto.CantidadIngresada = 20;
             objProducto.FallaFabrica = "0";
-            objProducto.Estado = "ACT";  
+            objProducto.Estado = "ACT";
 
             AddEditProductoViewModel objViewModel = new AddEditProductoViewModel();
             objViewModel.EliminarProducto(objProducto.Codigo);

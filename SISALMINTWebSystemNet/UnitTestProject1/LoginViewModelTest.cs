@@ -1,15 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SISALMINTWebSystemNet.ViewModel.HomeViewModel;
+﻿using SISALMINTWebSystemNet.ViewModel.HomeViewModel;
 using SISALMINTWebSystemNet.Models;
-
+using NUnit.Framework;
 namespace UnitTestProject1
 {
-    [TestClass]
+    [TestFixture]
     public class LoginViewModelTest
     {
 
-        [TestMethod]
+        [Test]
         public void ValidarLogin()
         {
             LoginViewModel objViewModel = new LoginViewModel();
@@ -19,7 +17,7 @@ namespace UnitTestProject1
             Assert.AreEqual(true, objViewModel.ValidarLogin());
         }
 
-        [TestMethod]
+        [Test]
         public void ValidarLoginFlujoAlternativo()
         {
             LoginViewModel objViewModel = new LoginViewModel();
@@ -29,7 +27,7 @@ namespace UnitTestProject1
             Assert.AreEqual(false, objViewModel.ValidarLogin());
         }
 
-        [TestMethod]
+        [Test]
         public void GetAdmin()
         {
             LoginViewModel objViewModel = new LoginViewModel();
@@ -40,7 +38,7 @@ namespace UnitTestProject1
             Assert.IsNotNull(objAdmin);
         }
 
-        [TestMethod]
+        [Test]
         public void GetAdminFlujoAlternativo()
         {
             LoginViewModel objViewModel = new LoginViewModel();

@@ -15,9 +15,11 @@ namespace SISALMINTWebSystemNet.ViewModel.ProductoViewModel
         public void Fill()
         {
             DBSISALMINTEntities context = new DBSISALMINTEntities();
+            var a = context.Producto.ToList().Count;
             var query = context.Producto.Where(x => x.Estado == "ACT").AsQueryable();
 
-            if (!string.IsNullOrEmpty(Filtro)) query = query.Where(x => x.Nombre.ToUpper().Contains(Filtro.ToUpper()));
+            if (!string.IsNullOrEmpty(Filtro))
+                query = query.Where(x => x.Nombre.ToUpper().Contains(Filtro.ToUpper()));
 
             LstProducto = query.ToList();
         }

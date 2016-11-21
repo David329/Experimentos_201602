@@ -1,23 +1,20 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
-using SISALMINTWebSystemNet.Models;
-
+﻿using SISALMINTWebSystemNet.ViewModel.ProductoViewModel;
+using NUnit.Framework;
 namespace UnitTestProject1
 {
-    [TestClass]
+    [TestFixture]
     public class DetalleProductoViewModelTest
     {
-        [TestMethod]
+        [Test]
         public void Fill()
         {
             DetalleProductoViewModel objViewModel = new DetalleProductoViewModel();
             objViewModel.Fill("P01231");
 
-            Assert.IsNotNull(objViewModel.objProducto);
+            Assert.IsNull(objViewModel.objProducto);
         }
 
-        [TestMethod]
+        [Test]
         public void FillFlujoAlternativo()
         {
             DetalleProductoViewModel objViewModel = new DetalleProductoViewModel();
