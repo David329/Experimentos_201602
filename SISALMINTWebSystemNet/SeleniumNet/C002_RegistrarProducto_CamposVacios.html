@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:5496/" />
+<title>C002_RegistrarProducto_CamposVacios</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">C002_RegistrarProducto_CamposVacios</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Producto/LstProducto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nuevo Producto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enviar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=codigo-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=nombre-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=marca-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=modelo-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=distribuidor-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=precio-error</td>
+	<td>Por favor, escriba un valor mayor o igual a 0.1.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=cantidad-error</td>
+	<td>Por favor, escriba un valor mayor o igual a 1.</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

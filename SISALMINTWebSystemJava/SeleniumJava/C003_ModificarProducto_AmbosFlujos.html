@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>C003_ModificarProducto_AmbosFlujos</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">C003_ModificarProducto_AmbosFlujos</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/SISALMINTWebSystemJava/ServletListProduct</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=P0002</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombre</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=marca</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modelo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fechaingreso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=distribuidor</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=precio</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cantidad</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enviar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=nombre-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=marca-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=modelo-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=fechaingreso-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=distribuidor-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=precio-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=cantidad-error</td>
+	<td>Este campo es obligatorio.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombre</td>
+	<td>iMac 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=marca</td>
+	<td>Mac 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modelo</td>
+	<td>S2016 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fechaingreso</td>
+	<td>2016-01-01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=distribuidor</td>
+	<td>iShop 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=precio</td>
+	<td>5999.99</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cantidad</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=enviar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Éxito! El producto se actualizó correctamente.</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
